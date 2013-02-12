@@ -18,7 +18,7 @@
  * @author      Andrew Morton <drewish@katherinehouse.com>
  * @package     Phlickr
  */
-abstract class Phlickr_Framework_ObjectBase {
+abstract class Phlickr_Framework_ObjectBase implements Phlickr_Framework_IObjectBase{
     /**
      * Reference to the API.
      *
@@ -90,7 +90,7 @@ abstract class Phlickr_Framework_ObjectBase {
      * @return  object Phlickr_Request
      * @see     __construct()
      */
-    protected function &createRequest(Phlickr_Api $api, $id) {
+    protected function createRequest(Phlickr_Api $api, $id) {
         $request = $api->createRequest(
             $this->getRequestMethodName(),
             $this->getRequestMethodParams($id)
@@ -132,34 +132,6 @@ abstract class Phlickr_Framework_ObjectBase {
         return $xml;
     }
 
-    /**
-     * Returns the name of this object's getInfo API method.
-     *
-     * @return  string
-     */
-    abstract static function getRequestMethodName();
-    /**
-     * Returns an array of parameters to be used when creating a
-     * Phlickr_Request to call this object's getInfo API method.
-     *
-     * @param   string $id The id value of this object.
-     * @return  array
-     * @see     getId()
-     */
-    abstract static function getRequestMethodParams($id);
-    /**
-     * Return the object's Id.
-     *
-     * @return  string
-     */
-    abstract function getId();
-    /**
-     * Return a URL to the Flickr webpage to view this object.
-     *
-     * @return  string
-     */
-    abstract public function buildUrl();
-
 
     /**
      * Return a reference to this object's Phlickr_Api.
@@ -167,7 +139,7 @@ abstract class Phlickr_Framework_ObjectBase {
      * @return  object Plickr_Api
      * @see     __construct()
      */
-    public function &getApi() {
+    public function getApi() {
         return $this->_api;
     }
     /**
