@@ -220,7 +220,7 @@ class Phlickr_Request {
      * @return  array
      * @see     setParams()
      */
-    public function &getParams()
+    public function getParams()
     {
         return $this->_params;
     }
@@ -309,7 +309,7 @@ class Phlickr_Request {
     public function execute($allowCached = false)
     {
         $url = $this->buildUrl();
-        $cache =& $this->getApi()->getCache();
+        $cache = $this->getApi()->getCache();
         if ($allowCached && $cache->has($url)) {
             $result = $cache->get($url);
         } else {
