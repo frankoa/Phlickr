@@ -1,4 +1,7 @@
 <?php
+
+require_once __DIR__."/Exception.php";
+
 /**
  * @version $Id$
  * @author  Andrew Morton <drewish@katherinehouse.com>
